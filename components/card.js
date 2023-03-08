@@ -1,13 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import moment from "moment/moment";
 
-const Card = ({ temperature, weather, icon, time }) => {
-
+const Card = ({ temperature, weather, icon, date }) => {
 
   return (
     <View style={styles.card}>
       <Text>
-        {time && `${time}h`}
+        {date && `${date.day}`}
+      </Text>
+      <Text>
+        {date && `${date.hour}`}
       </Text>
       <Text style={styles.title}>
         {temperature ? `${parseInt(temperature)}°C` : '°C'}
@@ -30,9 +33,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     borderRadius: 10,
     padding: 20,
-    marginTop: 20,
     marginHorizontal: 5,
-    width: 130,
+    flex: 1,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -57,8 +59,8 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   img: {
-    height: 50,
-    width: 50
+    height: 75,
+    width: 75
   }
 });
 

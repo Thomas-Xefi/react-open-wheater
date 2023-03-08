@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Location from 'expo-location';
 import Card from './components/card';
-import ScrollViewCard from './components/scrollViewCard';
+import VerticalScrollView from './components/VerticalScrollView';
+import moment from "moment";
 
 const apiKey = 'a317bce8821623b6cedf7b7b74595d89'
 
@@ -37,8 +38,9 @@ export default function App() {
         temperature={`${weather ? weather.main.temp : ''}°C`}
         weather={weather && weather.weather[0].main}
         icon={weather && weather.weather[0].icon}
+        date={ weather && {day: moment(weather.dt_txt).format('dddd d MMMM'), hour: moment(weather.dt_txt).format('LT')} }
       />
-      <ScrollViewCard location={location} />
+      <VerticalScrollView location={location} />
       <StatusBar style="auto" />
     </View>
   );
@@ -50,6 +52,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#35363a',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 32
   },
   title: {
     color: 'white',
