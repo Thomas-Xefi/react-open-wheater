@@ -36,7 +36,7 @@ export default function App() {
       <Card
         temperature={`${weather ? weather.main.temp : ''}°C`}
         weather={weather && weather.weather[0].main}
-        icon={weather && weather.main.icon}
+        icon={weather && weather.weather[0].icon}
       />
       <ScrollViewCard location={location} />
       <StatusBar style="auto" />

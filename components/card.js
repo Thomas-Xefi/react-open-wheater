@@ -2,21 +2,23 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 const Card = ({ temperature, weather, icon, time }) => {
+
+
   return (
     <View style={styles.card}>
       <Text>
-        {time}
+        {time && `${time}h`}
       </Text>
       <Text style={styles.title}>
         {temperature ? `${parseInt(temperature)}°C` : '°C'}
       </Text>
       <View style={styles.content}>
         <Image
-            source={{uri: `http://openweathermap.org/img/w/${icon}.png`}}
-            size={50}
+            style={styles.img}
+            source={{uri: `https://openweathermap.org/img/wn/${icon}.png`}}
         />
         <Text style={styles.weather}>
-            {weather} 
+            {weather}
         </Text>
       </View>
     </View>
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
     padding: 20,
     marginTop: 20,
     marginHorizontal: 5,
+    width: 130,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -53,6 +56,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 10
   },
+  img: {
+    height: 50,
+    width: 50
+  }
 });
 
 export default Card;

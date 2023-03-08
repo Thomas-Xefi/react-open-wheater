@@ -29,14 +29,14 @@ const ScrollViewCard = () => {
         <View style={styles.container}>
             <ScrollView horizontal={true}>
                 {
-                    weathers.map((weather, index) => (
-                        <Card
+                    weathers.map((weather) => {
+                        return <Card
                             temperature={weather && weather.main.temp}
                             weather={weather && weather.weather[0].main}
-                            icon={weather && weather.main.icon}
-                            time={moment(weather.dt)}
+                            icon={weather && weather.weather[0].icon}
+                            time={moment(weather.dt_txt).format('d MMMM, h')}
                         />
-                    ))
+                    })
                 }
             </ScrollView>
         </View>
